@@ -19,7 +19,7 @@
 
 
             <div class="mt-8 text-gray-900">
-                @foreach ($posts as $post)
+                @forelse ($posts as $post)
                     <div class="flex bg-white border border-gray-200 rounded-lg shadow-sm mb-8">
                         <div class="p-5 flex-1">
                             <a href="#">
@@ -36,11 +36,17 @@
                         <a href="#">
                             <img class="w-48 h-full object-cover rounded-r-lg" src="https://flowbite.com/docs/images/blog/image-1.jpg" alt="" />
                         </a>
-                    </div>
-                @endforeach
+                    </div>                   
+                @empty
+                <div class="text-center text-gray-400 py-16">
+                    No Posts Found
+                </div>
+                @endforelse 
+
+
             </div>
 
-            {{ $posts->links() }}
+            {{ $posts->onEachSide(1)->links() }}
         </div>
     </div>
 </x-app-layout>
